@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        title Webapp
+        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        nav.navbar.navbar-expand.navbar-dark.bg-dark
+            a.navbar-brand(href='#') Webapp
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample02', aria-controls='navbarsExample02', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarsExample02.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Home
+                            span.sr-only (current)
+                    if user
+                        li.nav-item
+                            a.nav-link(href='/article/add') Add Article
+                ul.navbar-nav.navbar-right
+                    if user
+                        li.nav-item
+                            a.nav-link(href='/users/logout') Logout
+                    else
+                        li.nav-item
+                            a.nav-link(href='/users/register') Register
+                        li.nav-item
+                            a.nav-link(href='/users/login') Login
+
+        .container
+            br
+            != messages('message', locals)
+            block content
+            br
+            hr
+            footer
+                p Copyright &copy; 2020
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/js/main.js')
