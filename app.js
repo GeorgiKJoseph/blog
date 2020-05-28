@@ -102,8 +102,10 @@ app.get('/', (req,res) => {
 // Route Files
 let articles = require('./routes/articles');
 let users = require('./routes/users');
+let reset = require('./routes/passreset')
 app.use('/article',articles);
 app.use('/users',users);
+app.use('/passreset',reset);
 
 //Start Server
 app.listen(3000, function() {

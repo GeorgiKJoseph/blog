@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 Change Password
+    br
+    form(method='POST', action='/passreset/newpass/'+token)
+        #form-group
+            label New Password
+            input.form-control(name='password1', type='password')
+        #form-group
+            label Confirm Password
+            input.form-control(name='password2', type='password')
+        br
+        input.btn.btn-primary(type='submit', value='Change')
+    br

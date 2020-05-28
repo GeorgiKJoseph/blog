@@ -49,12 +49,16 @@ router.get('/:id', (req,res) => {
         if(err){
             console.log(err);
         }else{
-            User.findById(article.author, (err,user) => {
-                res.render('article',{
-                    article: article,
-                    author: user.name,
-                })
-            });
+            if(article){
+                User.findById(article.author, (err,user) => {
+                    res.render('article',{
+                        article: article,
+                        author: user.name,
+                    })
+                });
+            } else {
+                req.status(404);
+            }
         }
     });
 });
